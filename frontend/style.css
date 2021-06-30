@@ -1,0 +1,313 @@
+/*
+  Name: Andrey Butenko
+  Date: April 21, 2019
+  Section: CSE 154 AI
+  This is the style.css stylesheet for Doala, a todo list app. It supports multiple lists and
+  keyboard shortcuts.
+*/
+
+@import url('https://fonts.googleapis.com/css?family=Poppins:400,700');
+
+body {
+  padding: 0;
+  margin: 0;
+  background-color: #ff6b81;
+}
+
+body.dark-mode {
+  background-color: #111;
+  color: white;
+}
+
+body, input[type="text"], button {
+  font-family: 'Poppins', sans-serif
+}
+
+body.dark-mode, body.dark-mode input[type="text"], body.dark-mode button {
+  color: #eee;
+}
+
+header, main {
+  background-color: white;
+}
+
+body.dark-mode header, body.dark-mode main {
+  background-color: black;
+}
+
+header {
+  display: flex;
+  align-items: stretch;
+}
+
+header h1 {
+  margin: 0 32px;
+  align-self: center;
+}
+
+/* Todo Section */
+
+main {
+  width: 800px;
+  max-width: 90%;
+  margin: 64px auto 0 auto;
+  box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.2);
+  border-radius: 16px;
+}
+
+main .item-button:first-of-type {
+  border-top-left-radius: 16px;
+  border-top-right-radius: 16px;
+}
+
+main .item-button:last-of-type {
+  border-bottom-left-radius: 16px;
+  border-bottom-right-radius: 16px;
+}
+
+.item-button {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: 250ms all;
+  padding: 0;
+}
+
+.item-button:hover {
+  padding: 4px 0;
+  background-color: #f1f2f6;
+}
+
+body.dark-mode .item-button:hover {
+  background-color: #222;
+}
+
+.item-button .icon-container {
+  font-weight: 700;
+  vertical-align: middle;
+  width: 1em;
+  height: 1em;
+  border-radius: 4px;
+}
+
+body.dark-mode .item-button .icon-container {
+  background-color: white;
+}
+
+/* Todo Items */
+
+article.task {
+  display: flex;
+  align-items: center;
+  transition: 250ms background-color;
+}
+
+article.task.complete {
+  background-color: #7bed9f;
+}
+
+body.dark-mode article.task.complete {
+  background-color: #2f3542;
+}
+
+article.task input[type="checkbox"], .item-button .icon-container {
+  margin: 0 16px;
+  width: 20px;
+  height: 20px;
+}
+
+article.task input[type="text"], .item-button .label {
+  flex: 1;
+  padding: 16px;
+  border: 0;
+  background-color: transparent;
+  text-align: left;
+}
+
+article.task input[type="text"]::placeholder {
+  font-style: italic;
+}
+
+/* Dark mode transitions */
+
+body, header, main, input[type="text"] {
+  transition: 250ms background-color, 250ms color;
+}
+
+/* Tabs */
+
+.tabs {
+  list-style-type: none;
+  display: flex;
+  flex-direction: row;
+  padding: 0;
+  margin: 0;
+  overflow-x: hidden;
+}
+
+.tabs li {
+  min-width: 150px;
+  border-bottom: 8px solid transparent;
+}
+
+.tabs li button {
+  width: 100%;
+  border: 0;
+  background: none;
+  cursor: pointer;
+  padding: 16px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.tabs li.selected {
+  border-bottom: 8px solid #1e90ff;
+}
+
+.tabs li.selected button {
+  color: #1e90ff;
+}
+
+.tabs li:not(.selected):hover {
+  border-bottom: 8px solid #747d8c;
+}
+
+.tabs li:not(.selected):hover button {
+  color: #747d8c;
+}
+
+.tabs input[type="text"] {
+  height: 100%;
+  border: none;
+  text-align: center;
+}
+
+body.dark-mode .tabs input[type="text"] {
+  background-color: #222;
+  color: #eee;
+}
+
+.hide-tab-scroll .tab-scroll {
+  display: none;
+}
+
+.tab-scroll {
+  flex: 0 0 40px;
+  width: 40px;
+  height: 40px;
+  border-radius: 20px;
+  border: 0;
+  background: none;
+  background-color: #f1f2f6;
+  align-self: center;
+  cursor: pointer;
+  transition: 250ms background-color;
+}
+
+.tab-scroll:hover {
+  background-color: #70a1ff;
+}
+
+.tab-scroll#tab-scroll-left {
+  margin-right: 16px;
+}
+
+.tab-scroll#tab-scroll-right {
+  margin-left: 16px;
+}
+
+body.dark-mode .tab-scroll {
+  background-color: #222;
+}
+
+body.dark-mode .tab-scroll:hover {
+  background-color: #2f3542;
+}
+
+/* Modals */
+
+.modal-container {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-container.dismissed {
+  display: none;
+}
+
+.modal-container .modal {
+  background-color: white;
+  width: 800px;
+  max-width: 80%;
+  max-height: 80%;
+  padding: 32px;
+  border-radius: 16px;
+  overflow-y: auto;
+}
+
+body.dark-mode .modal-container .modal {
+  background-color: #222;
+}
+
+.modal-container .modal .modal-title {
+  display: flex;
+  align-items: center;
+}
+
+.modal-container .modal img {
+  height: 150px;
+  width: auto;
+  margin-right: 32px;
+}
+
+.modal-container .modal button {
+  width: 100%;
+  padding: 16px 32px;
+  border: none;
+  border-radius: 16px;
+  font-weight: 700;
+  background-color: #ff6b81;
+  cursor: pointer;
+}
+
+.modal-container .modal button:hover {
+  background-color: #ce586a;
+}
+
+span.key {
+  background-color: #ccc;
+  padding: 4px;
+  border-radius: 4px;
+  font-family: monospace;
+}
+
+body.dark-mode span.key {
+  background-color: black;
+}
+
+.panes {
+  display: flex;
+}
+
+.panes .pane {
+  flex: 1;
+  margin: 8px;
+}
+
+.panes .pane:first-of-type {
+  margin-left: 0;
+}
+
+.panes .pane:last-of-type {
+  margin-right: 0;
+}

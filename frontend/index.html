@@ -1,0 +1,104 @@
+<!--
+  Name: Andrey Butenko
+  Date: April 21, 2019
+  Section: CSE 154 AI
+  This is the index.html page for Doala, a todo list app. It supports multiple lists and
+  keyboard shortcuts.
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="style.css" />
+    <script src="main.js"></script>
+    <title>Doala</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png?doala">
+    <meta property="og:title" content="Doala" />
+    <meta property="og:description" content="Doala: the to-do app for koala fans, with super-fast keyboard shortcuts!" />
+    <meta property="og:url" content="https://doala.wndr.dev/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://doala.wndr.dev/doala-social.png" />
+  </head>
+  <body>
+    <div id="about-modal" class="modal-container dismissed">
+      <div class="modal">
+        <div class="modal-title">
+          <img src="koala-happy.png" alt="Happy koala mascot" />
+          <div>
+            <h2>About Doala</h2>
+            <p>
+              Doala is the to-do app for koala fans! The user experience is designed to speed up
+              most workflows through keyboard shortcuts. Your lists are safely saved on your computer
+              and are never shared.
+            </p>
+          </div>
+        </div>
+
+        <div class="panes">
+          <div class="pane">
+            <h3>Navigation</h3>
+            <ul>
+              <li><span class="key">ArrowUp</span>: move up to above todo item</li>
+              <li><span class="key">ArrowDown</span>: move down to below todo item</li>
+              <li><span class="key">Ctrl</span> + <span class="key">ArrowRight</span>: move right to next todo list, creating a new list if necessary</li>
+              <li><span class="key">Ctrl</span> + <span class="key">ArrowLeft</span>: move left to previous todo list</li>
+            </ul>
+            
+            <h3>Operations</h3>
+            <ul>
+              <li><span class="key">Enter</span>: create new todo item</li>
+              <li><span class="key">Ctrl</span> + <span class="key">Enter</span>: mark current todo item complete</li>
+              <li><span class="key">Ctrl</span> + <span class="key">Backspace</span>: delete current todo item</li>
+            </ul>
+          </div>
+
+          <div class="pane">
+            <h3>Reorganizing</h3>
+            <ul>
+              <li><span class="key">Ctrl</span> + <span class="key">ArrowUp</span>: move todo item up</li>
+              <li><span class="key">Ctrl</span> + <span class="key">ArrowDown</span>: move todo item down</li>
+              <li><span class="key">Ctrl</span> + <span class="key">Shift</span> + <span class="key">ArrowLeft</span>: move todo list left</li>
+              <li><span class="key">Ctrl</span> + <span class="key">Shift</span> + <span class="key">ArrowRight</span>: move todo list right</li>
+            </ul>
+    
+            <h3>Other</h3>
+            <ul>
+              <li>Rename a list by double-clicking its name</li>
+              <li><span class="key">Ctrl</span> + <span class="key">.</span>: toggle dark mode</li>
+              <li><span class="key">Ctrl</span> + <span class="key">/</span>: toggle this menu</li>
+            </ul>
+          </div>
+        </div>
+
+        <button id="close-modal">Close</button>
+      </div>
+    </div>
+    <header>
+      <h1>Doala</h1>
+      <button class="tab-scroll" id="tab-scroll-left">&lt;</button>
+      <ul id="todo-tabs" class="tabs">
+      </ul>
+      <button class="tab-scroll" id="tab-scroll-right">&gt;</button>
+    </header>
+    <main>
+      <button id="add-task" class="item-button">
+        <span class="icon-container">➕</span>
+        <span class="label">Add Task</span>
+      </button>
+      <section id="todo-list">
+      </section>
+      <button id="complete-all" class="item-button">
+        <span class="icon-container">️️👏</span>
+        <span class="label">Mark All Done</span>
+      </button>
+      <button id="toggle-dark" class="item-button">
+        <span class="icon-container">🌙</span>
+        <span class="label">Toggle Dark Mode</span>
+      </button>
+      <button id="show-about" class="item-button">
+        <span class="icon-container">🐨</span>
+        <span class="label">About Doala</span>
+      </button>
+    </main>
+  </body>
+</html>
